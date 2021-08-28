@@ -27,6 +27,8 @@ This BSP supports the following boards:
 			   TI SDK ti-processor-sdk-linux-j7-evm-07_01_00_10
   - 2021/04 (LINUXPG-665): WRLinux CI/CD branch support. Standard support based on
 			   TI SDK ti-processor-sdk-linux-j7-evm-07_03_00_05
+  - 2021/09 (LINUXPG-907): WRLinux CI/CD branch support. Standard support based on
+			   TI SDK ti-processor-sdk-linux-j7-evm-08_00_00_08
 
 3. BSP Features
 ===============
@@ -104,5 +106,5 @@ in a different environment it may possibly have some issues.
 	Processor:		J721E SR1.0
 	Board Rev:		J7X-BASE-CPB rev E3, J721EX-PM2-SOM rev E7, J7X-VSC8514-ETH rev E2
 	BootLoader:		U-Boot
-	BootLoader Version:	U-Boot 2020.01-g2781231a33 (Apr 10 2021 - 00:17:14 +0000)
+	BootLoader Version:	U-Boot 2021.01-g53e79d0e89 (Aug 04 2021 - 22:33:28 +0000)
 

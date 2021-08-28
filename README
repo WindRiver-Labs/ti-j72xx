@@ -198,7 +198,7 @@ Before using the features below, it is recommended that you first add
 WRTEMPLATE to your build local.conf to add series tools (Such as: can/audio/ufs).
 
 Simply add line as follows to ${buildprj}/build/conf/local.conf:
-	WRTEMPLATE ?= "feature/bsp-extras"
+	WRTEMPLATE = "feature/bsp-extras"
 
 And it is recommended to refer to the "Foundational Components" of the sdk
 release note "Processor SDK Linux for J721e" from the TI web.
@@ -245,12 +245,12 @@ Built and install them:
 
 	# bitbake wrlinux-image-xxx
 
-Get firmwares for EthSwitch firmware & R5 core and DSPs from IT website(For
-example to get "07_03_00_29" version firmwares):
-	# wget https://downloads.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/firmware/07_03_00_29/coresdk_rtos_j721e_07_03_00_29_firmware.tar.xz
+Get firmwares for EthSwitch firmware & R5 core and DSPs from IT website(Download
+the tar package "tisdk-default-image-j7-evm.tar.xz"):
+	http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html
 
-Copy all the picked firmwares to wrlinux rootfs directory "/lib/firmware/", and
-need to set executable attribute for these firmwares.
+Copy the /lib/firmware from above downloaded tar package to wrlinux rootfs directory "/lib/firmware/",
+and need to set executable attribute for these firmwares.
 	# sudo chmod +x -R /lib/firmware/
 
 Initialize all the available remote cores in the u-boot:
@@ -305,15 +305,14 @@ to realize system applications for vision processing like surround view.
 
 Vision Apps can be built or directly picked as out of the Box Demos from TI web,
 prebuilt PSDK RTOS and Demo Data can be downloaded from:
-	https://www.ti.com/tool/download/PROCESSOR-SDK-RTOS-J721E/07.03.00.07
+	https://www.ti.com/tool/download/PROCESSOR-SDK-RTOS-J721E/08.00.00.12
 
 It is recommended that you first refer to this guide document while using the
 vision apps:
-	https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/07_03_00_07/exports/docs/psdk_rtos/docs/user_guide/out_of_box_j721e.html
-
+	https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/08_00_00_12/exports/docs/psdk_rtos/docs/user_guide/out_of_box_j721e.html
 In order to run vision apps with full features on WRLinux, WRLinux should be built with:
 	- Modify the ${buildprj}/build/conf/local.conf to add:
-		WRTEMPLATE ?= "feature/bsp-extras"
+		WRTEMPLATE = "feature/bsp-extras"
 		KERNEL_FEATURES_append = " bsp/ti-j72xx/ti-j72xx-remoteproc.scc"
 	- Enable Graphics feature, please refer to "6.7.1 Build Image"
 
