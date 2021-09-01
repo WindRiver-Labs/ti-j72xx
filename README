@@ -389,6 +389,8 @@ As below is the step how to build a graphics enabled system and verify the graph
      $ cat << _EOF >> conf/local.conf
 DISTRO ?= "wrlinux-graphics"
 MACHINE_FEATURES += " gpu"
+PNWHITELIST_wr-ti-j72xx += 'img-pvr-sdk'
+PNWHITELIST_wr-ti-j72xx += 'ti-img-rogue-umlibs'
 _EOF
      $ bitbake wrlinux-image-std-sato
 
