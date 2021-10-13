@@ -167,15 +167,17 @@ images, the second is the related root file system.
 
    $ sudo dd if=wrlinux-image-<rootfs_type>-ti-j72xx.wic of=/dev/sdx
 
-2) Deploy the TI's bootloader files {tiboot3.bin tispl.bin sysfw.itb u-boot.img and uenv*} into this /dev/sdx1
+2) Deploy the TI's bootloader files {tiboot3.bin tispl.bin sysfw.itb and uenv*} into this /dev/sdx1
 
    $ sudo mount /dev/sdx1 path_to_sdx1
-   $ cp path_to_your_bootloader/{tiboot3.bin tispl.bin sysfw.itb u-boot.img and uenv*} path_to_sdx1
+   $ cp path_to_your_bootloader/{tiboot3.bin tispl.bin sysfw.itb and uenv*} path_to_sdx1
    $ sync; sudo umount path_to_sdx1
 
 Note:
-The TI's bootloader tar package "boot-j7-evm.tar.gz" can be downloaded from
+1. The TI's bootloader tar package "boot-j7-evm.tar.gz" can be downloaded from
 http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html
+2. The TI's bootloader file u-boot.img has been compiled and integrated into
+WRLinux WIC, it does not need to copy from TI SDK.
 
 5.2 Boot the board from the WIC SD card
 
