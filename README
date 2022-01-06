@@ -406,3 +406,30 @@ Connect with DP port(J37) and run below command:
 	#/usr/bin/SGX/demos/DRM/OGLES2FilmTV
 	#/usr/bin/SGX/demos/DRM/OGLES2MagicLantern
 	#/usr/bin/SGX/demos/DRM/OGLES2Navigation
+
+6.8 Video
+---------
+
+J721E has the following hardware accelerators:
+
+Multi-Standard HD Video Decoder (DECODER) based on D5520MP2 from Imagination
+Technologies for accelerating multimedia decode.
+Multi-Standard HD Video Encoder (ENCODER) based on VXE384MP2 from Imagination
+Technologies for accelerating multimedia encode.
+
+In order to use and verify the video feature, the multimedia firmware is
+required. The steps to install the firmware to system:
+
+1). Clone the firmware from:
+  git clone --branch ti-linux-firmware git://git.ti.com/processor-firmware/ti-linux-firmware.git
+
+2). Copy the multimedia firmware "ti-img/pvdec_full_bin.fw" to "path_to_your_rootfs/lib/firmware/"
+
+The Linux Kernel Drivers has integrated the Video Decoder and Encoder as module by default.
+In order to verify the multimedia feature, V4L2 Video Decoder & Encoder Test
+Application can be used to test, just copy the user applications from the TI SDK
+to WRLinux.
+
+Detailed introduction and support information and test steps for video, please refer to
+the user guide "3.7. Multimedia" chapter of "SDK Documentation" from TI website:
+ http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html
