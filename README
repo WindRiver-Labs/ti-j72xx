@@ -419,8 +419,55 @@ Technologies for accelerating multimedia encode.
 
 The Linux Kernel Drivers has integrated the Video Decoder and Encoder as module by default.
 In order to verify the multimedia feature, V4L2 Video Decoder & Encoder Test
-Application can be used to test, just copy the user applications from the TI SDK
-to WRLinux.
+Application can be used to test. However these two Applications depend on the
+package "ffmpeg", which has a restricted license 'commercial' and can not be
+added to the system by default. You can manually build the Image as below:
+
+6.8.1 Build Image
+-----------------
+
+  1) Add line as follows to ${buildprj}/build/conf/local.conf:
+     $ cat << _EOF >> conf/local.conf
+LICENSE_FLAGS_WHITELIST += "commercial"
+PNWHITELIST_wr-ti-j72xx += 'ffmpeg'
+IMAGE_INSTALL_append_ti-j72xx = ' viddec-test-app videnc-test-app'
+_EOF
+
+  2) bitbake wrlinux-image-xxx
+
+6.8.2 Verify Multimedia feature
+-------------------------------
+
+An example to test with viddec-test-app and videnc-test-app Applications:
+
+root@j7-evm:~# tidec_decode -i xxx.264 -o output.yuv
+TI DEC V4L2 Codec decoding example application
+Copyright (c) 2018 Texas Instruments, Inc.
+No drm device specified, testing /dev/dri/card0
+No drm device specified, testing /dev/dri/card1
+No drm device specified, using[  204.059041] img_dec 4300000.video-decoder: get_header_info Next src buffer is null
+ /dev/dri/card1
+Input #0, h264, from 'xxx.264':
+  Duration: N/A, bitrate: N/A
+    Stream #0:0: Video: h264 (High), yuv420p(progressive), 176x144, 25 fps, 25 tbr, 1200k tbn, 50 tbc/
+test app completed successfully
+
+root@j7-evm:~# tienc_encode -i yyy.yuv_00.raw -w 176 -h 144 -o out.h264
+No format found. Defaulting to NV12
+No format found. Defaulting to H264
+query_ctrls Enumerating all non-compound
+query_ctrls Got ctrl.id=0x9909cb type=1
+query_ctrls	name=GOP size minimum=1 maximum=7200
+query_ctrls	step=1 default_value=1800
+query_ctrls	flags=00000000
+query_ctrls Got ctrl.id=0x9909cf type=1
+query_ctrls	name=Video Bitrate minimum=50000 maximum=100000000
+query_ctrls	step=1 default_value=500000
+query_ctrls	flags=00000000
+.................
+try_ctrls VIDIOC_TRY_EXT_CTRLS succeeded
+set_ctrls VIDIOC_S_EXT_CTRLS succeeded
+
 
 Detailed introduction and support information and test steps for video, please refer to
 the user guide "3.7. Multimedia" chapter of "SDK Documentation" from TI website:
