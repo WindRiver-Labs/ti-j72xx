@@ -3,6 +3,8 @@ HOMEPAGE = "http://git.ti.com/graphics/ti-img-rogue-umlibs"
 LICENSE = "TI-TFL"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=7232b98c1c58f99e3baa03de5207e76f"
 
+NO_GENERIC_LICENSE[TI-TFL] = "LICENSE"
+
 inherit features_check
 
 REQUIRED_MACHINE_FEATURES = "gpu"

@@ -13,6 +13,8 @@ PR = "r19"
 
 COMPATIBLE_MACHINE = "omap-a15|ti43x|ti33x|k3|ti-j72xx"
 
+NO_GENERIC_LICENSE[TI-TSPA] = "Jacinto6-IMG-PowerVR-SDK-Manifest.pdf"
+
 S = "${WORKDIR}/git"
 SRC_DIR = "arm"
 SRC_DIR_ti-j72xx = "arm64"
