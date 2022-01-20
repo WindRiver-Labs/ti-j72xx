@@ -1,0 +1,38 @@
+From 4478bebd346344036922cfee0ddc8e6aa795da3f Mon Sep 17 00:00:00 2001
+From: Xulin Sun <xulin.sun@windriver.com>
+Date: Thu, 20 Jan 2022 11:48:26 +0800
+Subject: [PATCH] viddec-test-app: initialize string array to zero
+
+In some situations, by default there is some mess values in the array
+and cause the case judgment to fail and enter an illegal branch to run.
+Get wrong results, here initialize these string arrays to zero.
+
+Upstream-Status: pending
+
+Signed-off-by: Xulin Sun <xulin.sun@windriver.com>
+---
+ main.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/main.c b/main.c
+index dd4d3ad..3cb8469 100644
+--- a/main.c
++++ b/main.c
+@@ -1446,10 +1446,10 @@ int main(int argc, char **argv)
+ 	struct buffer outbufs[MAX_OUTBUFS];
+ 	struct buffer capbufs[MAX_CAPBUFS];
+ 	struct stream_context str_context;
+-	char input_file[256];
+-	char output_file_base[120];
+-	char output_file[128];
+-	char drm_file_name[20];
++	char input_file[256] = {0};
++	char output_file_base[120] = {0};
++	char output_file[128] = {0};
++	char drm_file_name[20] = {0};
+ #ifdef DRMMODE
+ 	const char *dir_path = "/dev/dri/";
+ 	DIR *d;
+-- 
+2.17.1
+

@@ -13,7 +13,11 @@ EXTRA_OEMAKE = "CC="${CC}""
 TARGET_CC_ARCH += "${LDFLAGS}"
 
 BRANCH = "master"
-SRC_URI = "git://git.ti.com/jacinto7_multimedia/viddec-test-app.git;protocol=git;branch=${BRANCH}"
+SRC_URI = "git://git.ti.com/jacinto7_multimedia/viddec-test-app.git;protocol=git;branch=${BRANCH} \
+	file://0001-viddec-test-app-initialize-string-array-to-zero.patch \
+"
 
 S = "${WORKDIR}/git"
 COMPATIBLE_MACHINE_ti-j72xx = "ti-j72xx"
+
+TARGET_CFLAGS_append_ti-j72xx = " -DDRMMODE -DDRM"
