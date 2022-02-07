@@ -31,6 +31,8 @@ This BSP supports the following boards:
 			   TI SDK ti-processor-sdk-linux-j7-evm-08_00_00_08
   - 2022/01 (LINUXPG-1028): WRLinux LTS21 branch support. Standard support based on
 			    TI SDK ti-processor-sdk-linux-j7-evm-08.01.00.07
+  - 2022/02 (LINUXPG-1039): WRLinux LTS21 branch support. Standard and Preempt-rt support based on
+                            TI SDK ti-processor-sdk-linux-j7-evm-08.01.00.07
 
 3. BSP Features
 ===============
