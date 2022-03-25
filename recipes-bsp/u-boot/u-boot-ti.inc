@@ -11,7 +11,7 @@ def get_git_revision(p):
 UBOOT_LOCALVERSION = "-g${@get_git_revision('${S}').__str__()[:10]}"
 
 UBOOT_SUFFIX ?= "img"
-SPL_BINARY ?= ""
+SPL_BINARY ?= "tispl.bin"
 
 require ${COREBASE}/meta/recipes-bsp/u-boot/u-boot-common.inc
 require ${COREBASE}/meta/recipes-bsp/u-boot/u-boot.inc
@@ -35,6 +35,12 @@ DEPENDS += "dtc-native bc-native lzop-native flex-native bison-native"
 
 DM_FIRMWARE = "ipc_echo_testb_mcu1_0_release_strip.xer5f"
 
+PACKAGECONFIG[atf] = "ATF=${STAGING_DIR_HOST}/firmware/bl31.bin,,trusted-firmware-a"
+PACKAGECONFIG[optee] = "TEE=${STAGING_DIR_HOST}${nonarch_base_libdir}/firmware/bl32.bin,,optee-os"
+PACKAGECONFIG[dm] = "DM=${STAGING_DIR_HOST}${nonarch_base_libdir}/firmware/pdk-ipc/${DM_FIRMWARE},,ti-rtos-firmware"
+
+PACKAGECONFIG:append:aarch64 = " atf optee dm"
+
 COMPATIBLE_MACHINE = "(ti-soc)|ti-j72xx"
 
 UBOOT_MACHINE = "j721e_evm_a72_config"
@@ -55,7 +61,7 @@ export TI_SECURE_DEV_PKG
 SYSROOT_DIRS += "/boot"
 
 # SPL (Second Program Loader) to be loaded over UART
-SPL_UART_BINARY = ""
+SPL_UART_BINARY = "u-boot-spl.bin"
 SPL_UART_BINARY_keystone = ""
 SPL_UART_BINARY_k3r5 = ""
 SPL_UART_BINARY_lego-ev3 = ""
@@ -269,4 +275,3 @@ do_deploy_append () {
 	rm ${DEPLOYDIR}/u-boot-initial-env-${MACHINE}-${PV}-${PR} || true
 	rm ${DEPLOYDIR}/${PN}-initial-env-${MACHINE}-${PV}-${PR} || true
 }
-
