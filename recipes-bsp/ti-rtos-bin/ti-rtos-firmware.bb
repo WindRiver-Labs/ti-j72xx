@@ -41,9 +41,9 @@ RTOS_IPC_FW_DIR = "${S}/ti-ipc/${PLAT_SFX}"
 
 # For back-ward compatability keeping legacy firmware folder name
 # TODO: fix this in next version
-LEGACY_ETH_FW_DIR = "${D}/lib/firmware/ethfw/"
-LEGACY_IPC_FW_DIR = "${D}/lib/firmware/pdk-ipc/"
-LEGACY_DM_FW_DIR  = "${D}/lib/firmware/pdk-ipc/"
+LEGACY_ETH_FW_DIR = "${D}/${nonarch_base_libdir}/firmware/ethfw/"
+LEGACY_IPC_FW_DIR = "${D}/${nonarch_base_libdir}/firmware/pdk-ipc/"
+LEGACY_DM_FW_DIR  = "${D}/${nonarch_base_libdir}/firmware/pdk-ipc/"
 
 DM_FIRMWARE = "ipc_echo_testb_mcu1_0_release_strip.xer5f"
 
